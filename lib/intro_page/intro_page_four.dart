@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class IntroPageThree extends StatelessWidget {
-  const IntroPageThree({super.key});
+class IntroPageFour extends StatelessWidget {
+  const IntroPageFour({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,14 @@ class IntroPageThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.network(
-                "https://assets8.lottiefiles.com/packages/lf20_XWnyRzwZRB.json",
+                "https://assets1.lottiefiles.com/packages/lf20_q2Q6BVY6eB.json",
                 width: 200,
                 height: 200),
             SizedBox(
               height: 10,
             ),
             Text(
-              "Pay",
+              "Voucher",
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.w800,
@@ -32,7 +32,7 @@ class IntroPageThree extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Quick money transfer\n free withdrawl",
+              "Daily promotion upto 50% shopping\n without worry about price",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,

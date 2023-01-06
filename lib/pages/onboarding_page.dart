@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_gospeedy/intro_page/intro_page_four.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_one.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_three.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_two.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'Home_page.dart';
+import 'home_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -28,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             controller: _controller,
             onPageChanged: (index) {
               setState(() {
-                onLastPage = (index == 2);
+                onLastPage = (index == 3);
               });
             },
             // ignore: prefer_const_literals_to_create_immutables
@@ -36,6 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               IntroPageOne(),
               IntroPageTwo(),
               IntroPageThree(),
+              IntroPageFour(),
             ],
           ),
           Container(
@@ -46,11 +48,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   //skip text
                   GestureDetector(
                       onTap: () {
-                        _controller.jumpToPage(2);
+                        _controller.jumpToPage(3);
                       },
                       child: Text("Skip")),
                   //dot indicator
-                  SmoothPageIndicator(controller: _controller, count: 3),
+                  SmoothPageIndicator(controller: _controller, count: 4),
                   //next button or done(for last page)
                   onLastPage
                       ? GestureDetector(
