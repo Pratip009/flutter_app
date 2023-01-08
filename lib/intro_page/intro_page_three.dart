@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_gospeedy/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPageThree extends StatelessWidget {
@@ -9,6 +11,7 @@ class IntroPageThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.OnboardingBackgroundColor3,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +25,8 @@ class IntroPageThree extends StatelessWidget {
             ),
             Text(
               "Pay",
-              style: TextStyle(
+              textAlign: TextAlign.center,
+              style: GoogleFonts.merriweather(
                 fontSize: 25,
                 fontWeight: FontWeight.w800,
                 color: Colors.black87,
@@ -33,10 +37,12 @@ class IntroPageThree extends StatelessWidget {
             ),
             Text(
               "Quick money transfer\n free withdrawl",
-              textAlign: TextAlign.center,
-              style: TextStyle(
+             textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
                 fontSize: 15,
-                color: Colors.grey,
+                height: 1.5,
+                color: AppColor.OnboardingSmallText,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

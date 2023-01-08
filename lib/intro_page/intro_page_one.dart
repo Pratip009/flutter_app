@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_gospeedy/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPageOne extends StatelessWidget {
@@ -9,6 +11,7 @@ class IntroPageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.OnboardingBackgroundColor1,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +25,8 @@ class IntroPageOne extends StatelessWidget {
             ),
             Text(
               "Go To Market",
-              style: TextStyle(
+              textAlign: TextAlign.center,
+              style: GoogleFonts.merriweather(
                 fontSize: 25,
                 fontWeight: FontWeight.w800,
                 color: Colors.black87,
@@ -34,9 +38,11 @@ class IntroPageOne extends StatelessWidget {
             Text(
               "fresh and green goods\n fast free delevery",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 15,
-                color: Colors.grey,
+                height: 1.5,
+                color: AppColor.OnboardingSmallText,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "287378463879",
+    "project_id": "tripay-flutter",
+    "storage_bucket": "tripay-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287378463879:android:a8e8cb8129d8e652fa2c22",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_gospeedy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287378463879-2gv7a4h28qmstv8kedonrjh5gj32h6fn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_gospeedy",
+            "certificate_hash": "0b961877ca65b347100c17ef117685cbc038b7cc"
+          }
+        },
+        {
+          "client_id": "287378463879-sj3eq9u0kjim3mt93mtiiag1s6sm4qnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApezWhOyZxJlNMgGjbKKDNAwFRLfKtwWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287378463879-sj3eq9u0kjim3mt93mtiiag1s6sm4qnb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "287378463879-clm9laffg8cggternq8qt0onaf6pja0b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplicationGospeedy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
