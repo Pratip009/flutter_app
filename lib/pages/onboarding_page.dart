@@ -5,10 +5,10 @@ import 'package:flutter_application_gospeedy/intro_page/intro_page_four.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_one.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_three.dart';
 import 'package:flutter_application_gospeedy/intro_page/intro_page_two.dart';
+import 'package:flutter_application_gospeedy/pages/auth/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'login_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Row(
                             children: [
                               Text(
-                                "Done",
+                                "Create Account",
                                 style: GoogleFonts.roboto(
                                   color: Colors.blue,
                                   fontWeight: FontWeight.w700,

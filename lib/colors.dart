@@ -21,4 +21,5 @@ class AppColor {
   static Color OnboardingSmallText = hexToColor('#8B8378');
 
   static Color ButtonColor = hexToColor('#4681f4');
+    static Color SignupBackground = hexToColor('#B8D8D8');
 }

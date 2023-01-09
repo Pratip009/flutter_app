@@ -1,21 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_gospeedy/pages/Home_page.dart';
+
+import 'package:flutter_application_gospeedy/pages/home_screen.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupMobile extends StatefulWidget {
+  const SignupMobile({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupMobile> createState() => _SignupMobileState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupMobileState extends State<SignupMobile> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   double screenHeight = 0;
@@ -64,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
         .whenComplete(() {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => const HomeScreen(),
         ),
       );
     });
