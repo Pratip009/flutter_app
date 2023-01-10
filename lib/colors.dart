@@ -17,9 +17,10 @@ class AppColor {
   static Color OnboardingBackgroundColor2 = hexToColor('#FFF6E5');
   static Color OnboardingBackgroundColor3 = hexToColor('#E7FDF8');
   static Color OnboardingBackgroundColor4 = hexToColor('#E7F8FD');
+ 
 
   static Color OnboardingSmallText = hexToColor('#8B8378');
 
   static Color ButtonColor = hexToColor('#4681f4');
-    static Color SignupBackground = hexToColor('#B8D8D8');
+  static Color SignupBackground = hexToColor('#B8D8D8');
 }

@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_gospeedy/colors.dart';
 import 'package:flutter_application_gospeedy/pages/auth/password_reset.dart';
 import 'package:flutter_application_gospeedy/pages/auth/signup_page.dart';
 import 'package:lottie/lottie.dart';
@@ -24,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.SignupBackground,
+      backgroundColor: Colors.blue.shade100,
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -56,8 +55,10 @@ class _LoginPageState extends State<LoginPage> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
@@ -79,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(color: Colors.black87)),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const SignupPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SignupPage()));
           },
           child: const Text(
             " Sign Up",
@@ -103,8 +104,8 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(color: Colors.black87),
           textAlign: TextAlign.right,
         ),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }
