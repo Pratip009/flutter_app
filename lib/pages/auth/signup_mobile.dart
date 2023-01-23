@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_application_gospeedy/pages/home_screen.dart';
+import 'package:flutter_application_gospeedy/pages/navpages/main_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -63,7 +63,7 @@ class _SignupMobileState extends State<SignupMobile> {
         .whenComplete(() {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const MainPage(),
         ),
       );
     });
@@ -83,7 +83,7 @@ class _SignupMobileState extends State<SignupMobile> {
         return Future.value(false);
       },
       child: Scaffold(
-        backgroundColor: blue,
+        backgroundColor: Colors.black87,
         body: SizedBox(
           height: screenHeight,
           width: screenWidth,
@@ -92,12 +92,14 @@ class _SignupMobileState extends State<SignupMobile> {
               Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
-                  padding: EdgeInsets.only(top: screenHeight / 8),
+                  padding: EdgeInsets.only(
+                    top: screenHeight / 8,
+                  ),
                   child: Column(
                     children: [
                       Text(
                         "JOIN US",
-                        style: GoogleFonts.montserrat(
+                        style: GoogleFonts.aBeeZee(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: screenWidth / 8,
@@ -105,7 +107,7 @@ class _SignupMobileState extends State<SignupMobile> {
                       ),
                       Text(
                         "Create an account today!",
-                        style: GoogleFonts.montserrat(
+                        style: GoogleFonts.aBeeZee(
                           color: Colors.white,
                           fontSize: screenWidth / 30,
                         ),
@@ -140,7 +142,7 @@ class _SignupMobileState extends State<SignupMobile> {
                     padding: EdgeInsets.only(
                       left: screenWidth / 12,
                       right: screenWidth / 12,
-                      top: bottom > 0 ? screenHeight / 12 : 0,
+                      top: bottom > 0 ? screenHeight / 8 : 0,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,22 +167,27 @@ class _SignupMobileState extends State<SignupMobile> {
                               }
                             }
                           },
-                          child: Container(
-                            height: 50,
-                            width: screenWidth,
-                            margin: EdgeInsets.only(bottom: screenHeight / 12),
-                            decoration: BoxDecoration(
-                              color: blue,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "CONTINUE",
-                                style: GoogleFonts.montserrat(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1.5,
-                                  fontSize: 18,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            child: Container(
+                              height: 50,
+                              width: screenWidth,
+                              margin:
+                                  EdgeInsets.only(bottom: screenHeight / 12),
+                              decoration: BoxDecoration(
+                                color: Colors.black87,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "SEND OTP",
+                                  style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1.5,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
                             ),
@@ -210,53 +217,69 @@ class _SignupMobileState extends State<SignupMobile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Username",
-          style: GoogleFonts.montserrat(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Text(
+            "Username",
+            style: GoogleFonts.montserrat(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(
-          height: 8,
+          height: 5,
         ),
-        TextFormField(
-          controller: usernameController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: TextFormField(
+            controller: usernameController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
             ),
           ),
         ),
         const SizedBox(
           height: 16,
         ),
-        Text(
-          "Phone number",
-          style: GoogleFonts.montserrat(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Text(
+            "Phone number",
+            style: GoogleFonts.montserrat(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        IntlPhoneField(
-          controller: phoneController,
-          showCountryFlag: false,
-          showDropdownIcon: false,
-          initialValue: countryDial,
-          onCountryChanged: (country) {
-            setState(() {
-              countryDial = "+${country.dialCode}";
-            });
-          },
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
+        // ignore: prefer_const_constructors
+        SizedBox(
+          height: 5,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: IntlPhoneField(
+            controller: phoneController,
+            showCountryFlag: false,
+            showDropdownIcon: false,
+            initialValue: countryDial,
+            onCountryChanged: (country) {
+              setState(() {
+                countryDial = "+${country.dialCode}";
+              });
+            },
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
             ),
           ),
         ),

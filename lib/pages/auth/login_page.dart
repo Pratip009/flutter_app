@@ -1,14 +1,17 @@
-// ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace, avoid_print
+// ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace, avoid_print, prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_gospeedy/pages/auth/password_reset.dart';
 import 'package:flutter_application_gospeedy/pages/auth/signup_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../widgets/my_textfield.dart';
 import '../../widgets/reusable_widget.dart';
-import '../home_screen.dart';
+import '../../widgets/square_tile.dart';
+import '../navpages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -23,32 +26,49 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade100,
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+                20, MediaQuery.of(context).size.height * 0.1, 20, 0),
             child: Column(
               children: <Widget>[
-                LottieBuilder.network(
-                    'https://assets5.lottiefiles.com/temp/lf20_vPVuBU.json'),
-                const SizedBox(
-                  height: 20,
+                Icon(
+                  Icons.lock,
+                  size: 100,
                 ),
-                reusableTextField("Enter UserName", Icons.person_outline, false,
-                    _emailTextController),
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
-                reusableTextField("Enter Password", Icons.lock_outline, true,
-                    _passwordTextController),
+                Text(
+                  'Welcome back you\'ve been missed!',
+                  style: GoogleFonts.aBeeZee(
+                    color: Colors.black87,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 25),
+                MyTextField(
+                  controller: _emailTextController,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 10),
+                MyTextField(
+                  controller: _passwordTextController,
+                  hintText: 'Password',
+                  obscureText: false,
+                ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
-                forgetPassword(context),
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: forgetPassword(context),
+                ),
+                const SizedBox(height: 25),
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
@@ -58,11 +78,49 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
+                            builder: (context) => const MainPage()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
                 }),
+                SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          'Or continue with',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    // google button
+                    SquareTile(imagePath: 'assets/images/mobile1.jpg'),
+                  ],
+                ),
+                const SizedBox(height: 50),
                 signUpOption()
               ],
             ),
@@ -76,15 +134,14 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have account?",
-            style: TextStyle(color: Colors.black87)),
+        const Text('Not a member?', style: TextStyle(color: Colors.black87)),
         GestureDetector(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SignupPage()));
           },
           child: const Text(
-            " Sign Up",
+            ' Register now',
             style:
                 TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
           ),
@@ -102,7 +159,6 @@ class _LoginPageState extends State<LoginPage> {
         child: const Text(
           "Forgot Password?",
           style: TextStyle(color: Colors.black87),
-          textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const ResetPassword())),
