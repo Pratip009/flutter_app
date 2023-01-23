@@ -5,7 +5,7 @@ import 'package:flutter_application_gospeedy/pages/navpages/home_page.dart';
 import 'package:flutter_application_gospeedy/pages/navpages/profile_page.dart';
 import 'package:flutter_application_gospeedy/pages/navpages/search_page.dart';
 import 'package:flutter_application_gospeedy/pages/navpages/settings.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

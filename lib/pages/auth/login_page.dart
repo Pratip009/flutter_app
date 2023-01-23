@@ -1,8 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace, avoid_print, prefer_const_constructors
 
+import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_gospeedy/dimensions.dart';
 import 'package:flutter_application_gospeedy/pages/auth/password_reset.dart';
 import 'package:flutter_application_gospeedy/pages/auth/signup_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,31 +34,31 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height * 0.1, 20, 0),
+            padding: EdgeInsets.fromLTRB(Dimesions.width20,
+                MediaQuery.of(context).size.height * 0.1, Dimesions.width20, 0),
             child: Column(
               children: <Widget>[
                 Icon(
                   Icons.lock,
-                  size: 100,
+                  size: Dimesions.height100,
                 ),
-                const SizedBox(
-                  height: 50,
+                SizedBox(
+                  height: Dimesions.height45,
                 ),
                 Text(
                   'Welcome back you\'ve been missed!',
                   style: GoogleFonts.aBeeZee(
                     color: Colors.black87,
-                    fontSize: 16,
+                    fontSize: Dimesions.font16,
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: 25),
                 MyTextField(
                   controller: _emailTextController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: Dimesions.height10),
                 MyTextField(
                   controller: _passwordTextController,
                   hintText: 'Password',
