@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_gospeedy/pages/auth/login_page.dart';
 import 'package:flutter_application_gospeedy/pages/navpages/main_page.dart';
-import 'package:flutter_application_gospeedy/pages/onboard.dart';
+import 'package:flutter_application_gospeedy/pages/onboard/onboard.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

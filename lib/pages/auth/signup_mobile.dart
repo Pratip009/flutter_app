@@ -22,7 +22,7 @@ class _SignupMobileState extends State<SignupMobile> {
   double bottom = 0;
 
   String otpPin = " ";
-  String countryDial = "+1";
+  String countryDial = "+91";
   String verID = " ";
 
   int screenState = 0;
@@ -83,6 +83,7 @@ class _SignupMobileState extends State<SignupMobile> {
         return Future.value(false);
       },
       child: Scaffold(
+        //back button to sugn up page???
         backgroundColor: Colors.black87,
         body: SizedBox(
           height: screenHeight,
@@ -96,6 +97,7 @@ class _SignupMobileState extends State<SignupMobile> {
                     top: screenHeight / 8,
                   ),
                   child: Column(
+                    
                     children: [
                       Text(
                         "JOIN US",
@@ -181,7 +183,7 @@ class _SignupMobileState extends State<SignupMobile> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "SEND OTP",
+                                  "VARIFY OTP",
                                   style: GoogleFonts.montserrat(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,

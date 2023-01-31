@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
   smooth_page_indicator: ^1.0.0+2
-  lottie: ^2.1.0
   firebase_core: ^2.4.1
   firebase_auth: ^4.2.5
   flutterfire: ^0.0.1
@@ -46,7 +45,11 @@ dependencies:
   pin_code_fields: ^7.4.0
   shared_preferences: ^2.0.15
   cloud_firestore: ^4.3.1
+  image_picker: ^0.8.6+1
   get: ^4.6.5
+  file_picker: ^5.2.5
+  fluttertoast: ^8.0.8 
+  firebase_storage: ^11.0.10
 
 dev_dependencies:
   flutter_test:

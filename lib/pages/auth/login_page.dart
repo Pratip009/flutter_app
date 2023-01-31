@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace, avoid_print, prefer_const_constructors
 
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -9,7 +7,6 @@ import 'package:flutter_application_gospeedy/dimensions.dart';
 import 'package:flutter_application_gospeedy/pages/auth/password_reset.dart';
 import 'package:flutter_application_gospeedy/pages/auth/signup_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../widgets/my_textfield.dart';
 import '../../widgets/reusable_widget.dart';
@@ -24,8 +21,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _passwordTextController = TextEditingController();
-  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController passwordTextController = TextEditingController();
+  final TextEditingController emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,33 +31,33 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(Dimesions.width20,
-                MediaQuery.of(context).size.height * 0.1, Dimesions.width20, 0),
+            padding: EdgeInsets.fromLTRB(
+                20, MediaQuery.of(context).size.height * 0.1, 20, 0),
             child: Column(
               children: <Widget>[
                 Icon(
                   Icons.lock,
-                  size: Dimesions.height100,
+                  size: 100,
                 ),
                 SizedBox(
-                  height: Dimesions.height45,
+                  height: 50,
                 ),
                 Text(
                   'Welcome back you\'ve been missed!',
                   style: GoogleFonts.aBeeZee(
                     color: Colors.black87,
-                    fontSize: Dimesions.font16,
+                    fontSize: 16,
                   ),
                 ),
                 SizedBox(height: 25),
                 MyTextField(
-                  controller: _emailTextController,
+                  controller: emailTextController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-                SizedBox(height: Dimesions.height10),
+                SizedBox(height: 10),
                 MyTextField(
-                  controller: _passwordTextController,
+                  controller: passwordTextController,
                   hintText: 'Password',
                   obscureText: false,
                 ),
@@ -75,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
+                          email: emailTextController.text,
+                          password: passwordTextController.text)
                       .then((value) {
                     Navigator.push(
                         context,
@@ -145,8 +142,8 @@ class _LoginPageState extends State<LoginPage> {
           },
           child: const Text(
             ' Register now',
-            style:
-                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.blueAccent, fontWeight: FontWeight.bold),
           ),
         )
       ],

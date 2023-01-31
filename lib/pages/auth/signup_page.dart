@@ -1,33 +1,28 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, sized_box_for_whitespace, avoid_print
+// ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_gospeedy/colors.dart';
-import 'package:flutter_application_gospeedy/pages/auth/login_page.dart';
 import 'package:flutter_application_gospeedy/pages/auth/signup_mobile.dart';
 import 'package:flutter_application_gospeedy/pages/auth/verify_email_screen.dart';
-
-import 'package:flutter_application_gospeedy/pages/navpages/main_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../widgets/my_textfield.dart';
-import '../../widgets/reusable_widget.dart';
 import '../../widgets/square_tile.dart';
+import 'login_page.dart';
 
 class SignupPage extends StatefulWidget {
-  const SignupPage({Key? key}) : super(key: key);
+  const SignupPage({super.key});
 
   @override
-  _SignupPageState createState() => _SignupPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
 class _SignupPageState extends State<SignupPage> {
-  final TextEditingController _passwordTextController = TextEditingController();
-  final TextEditingController _emailTextController = TextEditingController();
-  final TextEditingController _userNameTextController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +55,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: 25,
                 ),
                 MyTextField(
-                  controller: _userNameTextController,
+                  controller: nameController,
                   hintText: 'User Name',
                   obscureText: false,
                 ),
@@ -68,7 +63,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: 10,
                 ),
                 MyTextField(
-                  controller: _emailTextController,
+                  controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
@@ -76,33 +71,36 @@ class _SignupPageState extends State<SignupPage> {
                   height: 10,
                 ),
                 MyTextField(
-                  controller: _passwordTextController,
+                  controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                 ),
                 const SizedBox(
                   height: 25,
                 ),
-                firebaseUIButton(
-                  context,
-                  "SIGN UP",
-                  () {
-                    FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: _emailTextController.text,
-                            password: _passwordTextController.text)
-                        .then((value) {
-                      print("Created New Account");
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VerifyEmailScreen(),
-                        ),
-                      );
-                    }).onError((error, stackTrace) {
-                      print("Error ${error.toString()}");
-                    });
-                  },
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black87),
+                    onPressed: () {
+                      registerUser();
+                    },
+                    child: Text(
+                      'SIGN UP',
+                      style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
@@ -163,7 +161,8 @@ class _SignupPageState extends State<SignupPage> {
                       child: const Text(
                         ' Login now',
                         style: TextStyle(
-                            color: Colors.black87, fontWeight: FontWeight.bold),
+                            color: Colors.blueAccent,
+                            fontWeight: FontWeight.bold),
                       ),
                     )
                   ],
@@ -174,5 +173,35 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
     );
+  }
+
+  Future registerUser() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = await FirebaseAuth.instance.currentUser;
+
+    try {
+      await auth
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .then((signedInUser) => {
+                FirebaseFirestore.instance
+                    .collection("user")
+                    .doc(signedInUser.user?.uid)
+                    .set({
+                  'name': nameController.text,
+                  'email': emailController.text,
+                }).then((signedInUser) => {
+                          print('success'),
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VerifyEmailScreen(),
+                            ),
+                          )
+                        })
+              });
+    } catch (e) {
+      print(e);
+    }
   }
 }

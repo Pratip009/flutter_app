@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_gospeedy/pages/auth/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constant.dart';
-import '../widgets/onboard_model.dart';
+import '../../constant.dart';
+import '../../widgets/onboard_model.dart';
 
 class OnBoard extends StatefulWidget {
   const OnBoard({super.key});
@@ -157,7 +157,7 @@ class _OnBoardState extends State<OnBoard> {
 
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 300),
-                        curve: Curves.bounceIn,
+                        curve: Curves.easeIn,
                       );
                     },
                     child: Container(

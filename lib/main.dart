@@ -2,11 +2,13 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_gospeedy/firebase_options.dart';
+
 import 'package:flutter_application_gospeedy/pages/auth/login_page.dart';
 import 'package:flutter_application_gospeedy/pages/navpages/main_page.dart';
-import 'package:flutter_application_gospeedy/pages/onboard.dart';
+import 'package:flutter_application_gospeedy/pages/navpages/profile_page_routes/personal_data.dart';
+import 'package:flutter_application_gospeedy/pages/onboard/onboard.dart';
 import 'package:flutter_application_gospeedy/splash_screen.dart';
+import 'package:flutter_application_gospeedy/widgets/pick_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // import 'package:flutter_application_gospeedy/pages/onboarding_page.dart';
@@ -34,7 +36,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isviewed != 0 ? OnBoard() : MainPage(),
+      // home: isviewed != 0 ? OnBoard() : LoginPage(),
+      home: OnBoard(),
     );
   }
 }
